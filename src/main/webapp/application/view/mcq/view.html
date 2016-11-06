@@ -1,0 +1,78 @@
+<div class="container panel panel-default mcq-save-panel">
+	<div class="row panel-heading">
+		<div class="col-md-12">Add Mcq</div>
+	</div>
+	<div class="row panel-body" ng-init="mcq={name:'', answers: [], subject: null}">
+
+		<div class="row space-below">
+			<div class="col-md-4">Subject</div>
+			<div class="col-md-8">
+				<select ng-model="mcq.subject" class="form-control"
+					ng-options="subject as subject.name for subject in subjects"></select>
+			</div>
+		</div>
+		<div class="row space-below">
+			<div class="col-md-4">Question</div>
+			<div class="col-md-8">
+				<input type="text" class="form-control" ng-model="mcq.name" />
+			</div>
+		</div>
+		<div class="row space-below">
+			<div class="col-md-4">Answers</div>
+			<div class="col-md-7">
+				<div class="input-group" ng-repeat="ans in mcq.answers">
+					<div class="input-group-btn">
+						<span class="input-group-addon" ng-bind="$index + 1"></span>
+					</div>
+					<input type="text" class="form-control" ng-model="ans.name">
+					<div class="input-group-btn">
+						<span class="input-group-addon"> <input type="checkbox"
+							ng-model="ans.correct">
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1">
+				<span class="input-group-addon"> <input type="button"
+					class="btn btn-default" value="New"
+					ng-click="mcq.answers.push({name:'', correct:false})">
+				</span>
+			</div>
+		</div>
+		<div class="row space-below">
+			<div class="col-md-4">Description</div>
+			<div class="col-md-8">
+				<input type="text" class="form-control" ng-model="mcq.description" />
+			</div>
+		</div>
+		<div class="row space-below">
+			<div class="col-md-4">&nbsp;</div>
+			<div class="col-md-8">
+				<input type="button" class="full-width btn" ng-click="save(mcq)"
+					value="Save" />
+			</div>
+		</div>
+		<div class="row space-below" ng-show="msg.save">
+			<div class="col-md-12">
+				<div class="well well-sm" ng-bind="msg.save"></div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="container panel panel-default mcq-data-panel">
+	<div class="row panel-heading">
+		<div class="col-md-3">Name</div>
+		<div class="col-md-3">Subject</div>
+		<div class="col-md-3">Answers</div>
+	</div>
+	<div class="row list-group-item" ng-repeat="mcq in mcqs">
+		<div class="col-md-3" ng-bind="mcq.name"></div>
+		<div class="col-md-3" ng-bind="mcq.subject.name"></div>
+		<div class="col-md-6">
+			<div class="col-md-12 list-group-item"
+				ng-repeat="answer in mcq.answers" ng-bind="answer.name"></div>
+		</div>
+	</div>
+</div>

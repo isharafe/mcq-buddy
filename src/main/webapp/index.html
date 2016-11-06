@@ -1,0 +1,29 @@
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="application/css/common.css">
+
+	<script type="text/javascript" src="vendor/angular/angular.js"></script>
+	<script type="text/javascript" src="vendor/angular/angular-route.js"></script>
+	
+	<script type="text/javascript" src="application/app.js"></script>
+	<script type="text/javascript" src="application/router.js"></script>
+	<script type="text/javascript" src="application/service/momcqService.js"></script>
+	<script type="text/javascript" src="application/view/subject/controller.js"></script>
+	<script type="text/javascript" src="application/view/mcq/controller.js"></script>
+	
+	<script type="text/javascript" src="application/run.js"></script>
+	
+	<title>MCQ</title>
+</head>
+<body>
+
+	<ul class="nav nav-tabs" ng-init="selected=''">
+	  <li role="presentation" ng-class="{active:selected=='su'}"><a href="#subject" ng-click="selected='su'">Subject</a></li>
+	  <li role="presentation" ng-class="{active:selected=='mc'}"><a href="#mcq" ng-click="selected='mc'">Mcq</a></li>
+	</ul>
+
+	<div ng-view class="view-animate"></div>
+</body>
+</html>

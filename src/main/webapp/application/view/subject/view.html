@@ -1,0 +1,42 @@
+<div class="container panel panel-default subject-save-panel">
+	<div class="row panel-heading">
+		<div class="col-md-12">Add Subject</div>
+	</div>
+	<div class="panel-body" ng-init="subject={name:''}">
+		<div class="row space-below">
+			<div class="col-md-4">Name</div>
+			<div class="col-md-8">
+				<input type="text" class="form-control" ng-model="subject.name" />
+			</div>
+		</div>
+		<div class="row space-below">
+			<div class="col-md-4">&nbsp;</div>
+			<div class="col-md-8">
+				<input type="button" class="full-width btn" ng-click="save(subject)"
+					value="Save" />
+			</div>
+		</div>
+		<div class="row space-below" ng-show='msg.save'>
+			<div class="col-md-12">
+				<div class="well well-sm" ng-bind="msg.save"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container panel panel-default subject-data-panel">
+	<div class="row panel-heading">
+		<div class="col-md-11">Saved Subjects</div>
+		<div class="col-md-1">
+			<input class="btn" type="button" ng-click="load()" value="Reload" />
+		</div>
+	</div>
+	<div class="row list-group-item disabled">
+		<div class="col-md-12">
+			<div ng-bind="msg.load"></div>
+		</div>
+	</div>
+	<div class="row list-group-item" ng-repeat="subject in subjects">
+		<div class="col-md-3" ng-bind="subject.name"></div>
+	</div>
+</div>
